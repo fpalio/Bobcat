@@ -13,7 +13,19 @@
     max-width: 30%;
 }
 
+<<<<<<< HEAD
 #main_graph{
     max-width: 900px;
     max-height: 500px;
 }
+=======
+.card{
+    border-radius: 15px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 60%;
+    height: auto;
+    margin: auto;
+}
+
+>>>>>>> 6c1ed7d4c57020a8310a3fc27bef03d5d0677d28
