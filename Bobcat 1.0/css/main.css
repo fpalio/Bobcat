@@ -1,0 +1,9 @@
+.form-group #search_bar{
+    min-width: 50%;
+    width:50%;
+}
+.navbar-form .form-control {
+    display: inline-block;
+    width: 500px;
+    vertical-align: middle;
+}
