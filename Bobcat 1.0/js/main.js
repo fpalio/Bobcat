@@ -7,7 +7,6 @@ $('#search_form').submit(function () {
     return false;
 });
 
-
 $("#search_btn").click(function () {
 
     var strAdd = "<h1>";
@@ -15,3 +14,7 @@ $("#search_btn").click(function () {
     strAdd += "</h1>"
     $("#graph_body").append(strAdd);
 });
+
+
+
+//FB Function

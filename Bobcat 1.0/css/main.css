@@ -7,3 +7,8 @@
     width: 500px;
     vertical-align: middle;
 }
+
+#table_body{
+    margin: auto;
+    max-width: 30%;
+}
