@@ -22,7 +22,16 @@ $("#search_btn").click(function () {
 
 //FB Function----------------------------------------
 
-
+function login() {
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            console.log('Logged in.');
+        }
+        else {
+            FB.login();
+        }
+    });
+}
 
 function processResponse(response)
 {
