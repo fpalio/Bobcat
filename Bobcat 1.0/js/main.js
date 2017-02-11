@@ -9,8 +9,10 @@ $('#search_form').submit(function () {
 
 $("#search_btn").click(function () {
 
+    var totString = $("#search_bars").val();
+
     var strAdd = "<h1>";
-    strAdd += $("#search_bars").val();
+    strAdd += totString.substr(24,totString.length);
     strAdd += "</h1>"
     $("#graph_body").append(strAdd);
 });
