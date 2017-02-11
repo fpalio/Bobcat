@@ -45,12 +45,6 @@ function processResponse(response)
 
     var interactions = 0;
 
-    dict["LOVE"] = 0;
-    dict["HAHA"] = 0;
-    dict["WOW"] = 0;
-    dict["SAD"] = 0;
-    dict["ANGRY"] = 0;
-
     //for each post in the response
     for(var post in response.posts.data)
     {

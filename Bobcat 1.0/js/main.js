@@ -12,9 +12,9 @@ $("#search_btn").click(function () {
     $("#graph_body").empty();
     var totString = $("#search_bars").val();
 
-    var strAdd = "<h1>";
+    var strAdd = "";
     strAdd += totString.substr(24,totString.length);
-    strAdd += "</h1>"
+    pullReactionData(strAdd);
     $("#graph_body").append(strAdd);
 });
 
