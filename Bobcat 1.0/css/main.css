@@ -12,3 +12,8 @@
     margin: auto;
     max-width: 30%;
 }
+
+#main_graph{
+    max-width: 900px;
+    max-height: 500px;
+}
