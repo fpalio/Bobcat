@@ -22,45 +22,39 @@
                        <span class="icon-bar"></span>
                        <span class="icon-bar"></span>
                    </button>
-                   <a class="navbar-brand" href="#">BOBCAT</a>
+                   <a class="navbar-brand" href="#">BOBCAT Marketing</a>
                </div>
 
                <!-- Collect the nav links, forms, and other content for toggling -->
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                   <ul class="nav navbar-nav">
-                       <li class="active"><a href="#">Option1 <span class="sr-only">(current)</span></a></li>
-                       <li><a href="#">Option2</a></li>
-                   </ul>
                    <form id="search_form" class="navbar-form navbar-left">
                        <div class="form-group">
                            <input  id ="search_bars" type="text" class="form-control" placeholder="Search">
                        </div>
-                       <button  id="search_btn" type="submit" class="btn btn-default">Submit</button>
+                       <button  id="load" type="submit" class="btn btn-primary"
+                                data-loading-text="<i class='icon-spinner icon-spin icon-large'></i> Gathering Data">
+                           Submit</button>
                    </form>
                </div><!-- /.navbar-collapse -->
            </div><!-- /.container-fluid -->
        </nav>
    </div>
-    
+
+       <div id="content">
         <div id="main_graph" class="col-sm-12">
-            <h2>Number of active users per month</h2>
+            <h2 id="title_url"></h2>
             <canvas id="line" width = "40%" height="20%" ></canvas>
         </div>
 
         <div class="col-sm-6">
             <canvas id="ages" width = "40%" height="20%"></canvas>
-            <canvas id="gender"></canvas>
         </div>
         <div class="col-sm-6">
-            <div id="table_body">
-       <table class = "table table-striped">
-           <caption>Reactions @ "Velogig"</caption>
-        </table>
-            </div>
+            <canvas id="gender" width = "70%" height="20%"></canvas>
         </div>
-    <div id ="footer_info">
-
-    </div>
+        <div id ="footer_info">
+        </div>
+        <div/>
 
    <script>
        window.fbAsyncInit = function() {

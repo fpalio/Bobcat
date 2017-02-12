@@ -1,3 +1,5 @@
+var chartUsers;
+
 function makeData(id,typeParam, dataParam, labelParam){
     var ctx = document.getElementById(id).getContext('2d');
     var myChart = new Chart(ctx, {
@@ -18,7 +20,7 @@ function makeData(id,typeParam, dataParam, labelParam){
         options:{
 
             // over all css or design
-            legend : {labels: {fontColor: "red",fontSize: 12, fontFamily:"Courier New"}},
+            legend : {labels: {fontColor: "black",fontSize: 14, fontFamily:"Courier New"}},
             animateScale: true,
 
 
@@ -44,6 +46,8 @@ function makeData(id,typeParam, dataParam, labelParam){
             }
         }
     });
+
+    return myChart;
 }
 
 function makePie(id, dataParam, labelParam)
@@ -52,20 +56,23 @@ function makePie(id, dataParam, labelParam)
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: [
-                labelParam[0],
-                labelParam[1]
-            ],
+            labels: labelParam,
             datasets: [
                 {
                     data: dataParam,
                     backgroundColor: [
                         "#36A2EB",
-                        "#FF6384",
+                        "#ff258c",
+                        "#fffa2b",
+                        "#31ff32",
+                        "#ff5f1c",
                     ],
                     hoverBackgroundColor: [
-                        "#36A2EB",
-                        "#FF6384",
+                        "#2c76a9",
+                        "#b01c5c",
+                        "#c1bc23",
+                        "#29cf2a",
+                        "#ae4216",
                     ]
                 }]
         },

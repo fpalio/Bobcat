@@ -7,7 +7,10 @@ $('#search_form').submit(function () {
     return false;
 });
 
-$("#search_btn").click(function () {
+$("#load").click(function () {
+
+    var $this = $(this);
+    $this.button('loading');
 
     $("#graph_body").empty();
     var totString = $("#search_bars").val();

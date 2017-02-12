@@ -1,6 +1,11 @@
 var idToPost = {};
 var monthYearToUsers = {};
 var monthYearToInteractions = {};
+var url;
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 function Post(id, time, reactions, comments)
 {
@@ -36,6 +41,8 @@ function getItemKey(item){
 
 function processReactions(reaction, data) {
     // /check all reactions in the post
+    reaction.interactions = 0;
+
     for (var reaction_id in data.reactions.data) {
         if (data.reactions.data[reaction_id] != undefined) {
             if (data.reactions.data[reaction_id].type != "LIKE") {
@@ -98,7 +105,6 @@ function processResponse(response)
 
     console.log("processing Response...");
     var reactions = {};
-
     var interactions = 0;
 
     //for each post in the response
@@ -124,7 +130,6 @@ function processResponse(response)
 
     }
 
-    console.log(Object.keys(monthYearToUsers).length);
     if(Object.keys(monthYearToUsers).length < 13)
     {
         next = response.paging.next;
@@ -134,17 +139,27 @@ function processResponse(response)
         }
     }
     else{
+        document.getElementById("title_url").innerHTML = "Number of Active Users per Month for the Page : " + url.capitalize();
+
         calculateData();
-        makeData('line', 'line', [dataChart, dataIntChart], ['Active Users', 'Total Interactions']);
-        makePie('ages', [780,650], ['Male', 'Female'])
+
+        $('#line').replaceWith('<canvas id="line"></canvas>');
+        chartUsers = makeData('line', 'line', [dataChart, dataIntChart], ['Active Users', 'Total Interactions']);
+
+
+        //makePie('ages', [780,650], ['Male', 'Female']);
+        $('.btn').button('reset');
     }
 }
 
 
-function pullData(url)
+function pullData(url_)
 {
+
+    url = url_;
     idToPost = {};
     monthYearToUsers = {};
+    monthYearToInteractions = {};
 
     var next = url + "/posts?fields=reactions,created_time,comments{created_time,from}";
     var stop = false;
