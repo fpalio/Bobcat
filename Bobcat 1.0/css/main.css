@@ -1,10 +1,7 @@
-.form-group #search_bar{
-    min-width: 50%;
-    width:50%;
-}
+
 .navbar-form .form-control {
     display: inline-block;
-    width: 500px;
+    width: 700px;
     vertical-align: middle;
 }
 
@@ -13,12 +10,12 @@
     max-width: 30%;
 }
 
-<<<<<<< HEAD
+
 #main_graph{
-    max-width: 900px;
-    max-height: 500px;
+    padding: 0 100px 0 100px;
+    text-align: center;
 }
-=======
+
 .card{
     border-radius: 15px;
     border: 2px solid black;
@@ -28,4 +25,4 @@
     margin: auto;
 }
 
->>>>>>> 6c1ed7d4c57020a8310a3fc27bef03d5d0677d28
+

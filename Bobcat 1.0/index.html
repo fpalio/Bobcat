@@ -41,12 +41,12 @@
            </div><!-- /.container-fluid -->
        </nav>
    </div>
-<<<<<<< HEAD
     
-        <div class="col-sm-12">
-            <canvas id="line"></canvas>
+        <div id="main_graph" class="col-sm-12">
+            <h2>Number of active users per month</h2>
+            <canvas id="line" width = "40%" height="20%" ></canvas>
         </div>
-    <div>
+
         <div class="col-sm-6">
             <canvas id="bar"></canvas>
         </div>
@@ -54,157 +54,52 @@
             <div id="table_body">
        <table class = "table table-striped">
            <caption>Reactions @ "Velogig"</caption>
-=======
-   <div id="graph_body">
-       <div id="start_message" class="card">
-           <div class="card-block">
-               <h3>Add a URL so we can Hunt for your data!!</h3>
-           </div>
-       </div>
 
-   </div>
-   <div id="table_body">
-       <!--<table class = "table table-striped">-->
-           <!--<caption>Reactions @ "Velogig"</caption>-->
->>>>>>> 6c1ed7d4c57020a8310a3fc27bef03d5d0677d28
 
-           <!--<thead>-->
-           <!--<tr>-->
-               <!--<th>Likes</th>-->
-               <!--<th>HAHA's</th>-->
-               <!--<th>Angry</th>-->
-               <!--<th>Wow</th>-->
-               <!--<th>Love</th>-->
-           <!--</tr>-->
-           <!--</thead>-->
-
-           <!--<tbody>-->
-           <!--<tr>-->
-               <!--<th>12</th>-->
-               <!--<th>14</th>-->
-               <!--<th>51</th>-->
-               <!--<th>32</th>-->
-               <!--<th>03</th>-->
-           <!--</tr>-->
-           <!--</tbody>-->
-
-       <!--</table>-->
-   </div>
+        </table>
+            </div>
         </div>
-    </div>
-  </div>
-    
-    
-   <div id="graph_body">
-        <div id="main_graph">
-            <h2>Facebook Data info</h2>
-              <div class="size">
-                
-              </div>
-                <div class="size">
-                
-              </div>
-                <div class = "size">
-                <canvas id="pie"></canvas>
-              </div>
-       </div>
-   </div>
-   
     <div id ="footer_info">
-        
+
     </div>
 
+
+
+   <script>
+       window.fbAsyncInit = function() {
+           FB.init({
+               appId      : '1732502817067188',
+               xfbml      : true,
+               version    : 'v2.8'
+           });
+           
+           FB.AppEvents.logPageView();
+
+           document.addEventListener("DOMContentLoaded", function() {
+           login();
+           });
+       };
+
+       (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+   </script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+           integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+           crossorigin="anonymous"></script>
+   <script src="js/FBHandling/facebookDataPoint.js"></script>
+   <script src="js/FBHandling/facebookData.js"></script>
+   <script src="js/main.js"></script>
+   <script src="js/ChartUsers.js"></script>
 
 </body>
-    <script>
-                function makeData(id,typeParam, dataParam, labelParam,numOfItemParam){
-                    var ctx = document.getElementById(id).getContext('2d');
-                    var myChart = new Chart(ctx, {
-                      type: typeParam,
-                      data: {
-                        labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG','SEP','OCT','NOV','DEC'],
-                        datasets: [{
-                          label: labelParam[0],
-                          
-                           backgroundColor: [
-                                "#2ecc71",
-                                "#3498db",
-                                "#95a5a6",
-                                "#9b59b6",
-                                "#f1c40f",
-                                "#e74c3c",
-                                "#34495e",
-                              ],
-                            data: dataParam[0],
-                        }, 
-                                   {
-                          label: labelParam[1],
-                          data: dataParam[1],
-                          backgroundColor: "rgba(255,153,0,0.4)"
-                        }]
-                      },
-                        options:{
-                            // over all css or design
-                            legend : {labels: {fontColor: "black",fontSize: 12, fontFamily:"Courier New"}},
-                            animateScale: true,
-                            
-                            
-                            scales:{
-                                yAxes: [{
-                                    ticks: {
-                                        fontFamily:"Courier New",
-                                        fontColor: "black",
-                                        fontSize: 15,
-                                        stepSize: 5,
-                                        beginAtZero:true
-                                    }
-                                }],
-                                xAxes: [{
-                                    ticks: {
-                                        fontFamily: "Courier New",
-                                        fontColor: "black",
-                                        fontSize: 15,
-                                        stepSize: 5,
-                                        beginAtZero:true
-                                    }
-                                }],
-                                
-                            }
-                        }
-                    });
-                }
-                
-                makeData('line','line', [[12,19,3,17,6,3,7],[2, 29, 5, 5, 2, 3, 10]],['car','dog'],3);
-                
-                makeData('bar','bar', [[12,19,3,17,6,3,7],[2, 29, 5, 5, 2, 3, 10]],['car','dog'],3);
-                
-                makeData('pie','pie', [[12,19,3,17,6,3,7],[2, 29, 5, 5, 2, 3, 10]],['car','dog'],3);
-                
-                
-            </script>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '1732502817067188',
-            xfbml      : true,
-            version    : 'v2.8'
-        });
-        FB.AppEvents.logPageView();
-        document.onload = login();
-    };
 
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-<script src="js/FBHandling/facebookDataPoint.js"></script>
-<script src="js/main.js"></script>
+
+
 </html>
