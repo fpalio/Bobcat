@@ -13,8 +13,18 @@ $("#search_btn").click(function () {
     var totString = $("#search_bars").val();
 
     var strAdd = "";
-    strAdd += totString.substr(24,totString.length);
-    pullReactionData(strAdd);
+    strAdd += totString.substr(totString.indexOf("facebook.com")+"facebook.com".length+1,totString.length);
+
+    if(strAdd.indexOf('/') > -1) {
+        strAdd = strAdd.substr(0, strAdd.indexOf('/'));
+    }
+
+
+    if(strAdd !== "")
+    {
+        pullData(strAdd);
+    }
+
     $("#graph_body").append(strAdd);
 });
 
@@ -32,12 +42,6 @@ function login() {
             calculateData();
 
             console.log(dataChart);
-
-            makeData('line', 'line', [dataChart], ['cats', 'dog']);
-
-            makeData('bar', 'bar', [[12, 19, 3, 17, 6, 3, 7, 8, 10, 9, 10, 19], [2, 29, 5, 5, 2, 3, 10]], ['car', 'dog']);
-
-            makeData('pie', 'pie', [[12, 19, 3, 17, 6, 3, 7, 8, 10, 9, 10, 19], [2, 29, 5, 5, 2, 3, 10]], ['car', 'dog']);
 
             document.getElementById("user-greeting").textContent = "Welcome back, Bart";
         }

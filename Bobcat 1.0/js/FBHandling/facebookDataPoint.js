@@ -1,5 +1,6 @@
 var idToPost = {};
 var monthYearToUsers = {};
+var monthYearToInteractions = {};
 
 function Post(id, time, reactions, comments)
 {
@@ -43,6 +44,7 @@ function processReactions(reaction, data) {
             }
 
             addUsers(getItemKey(data), data.reactions.data[reaction_id].id, "reaction");
+            addInteraction(getItemKey(data))
             reaction.interactions += 1;
         }
     }
@@ -57,6 +59,16 @@ function addUsers(key, id){
 
     //add the user
     monthYearToUsers[key].add(id);
+}
+
+function addInteraction(key)
+{
+    if(!monthYearToInteractions[key])
+    {
+        monthYearToInteractions[key]=0;
+    }
+
+    monthYearToInteractions[key]+=1;
 }
 
 function processComments(comments, data) {
@@ -75,6 +87,7 @@ function processComments(comments, data) {
 
             //add the the id to the key
                 addUsers(key, data.comments.data[comment_id].from.id, "comment");
+                addInteraction(key);
         }
     }
 
@@ -120,6 +133,11 @@ function processResponse(response)
             $.get(next, processResponse, "json");
         }
     }
+    else{
+        calculateData();
+        makeData('line', 'line', [dataChart, dataIntChart], ['Active Users', 'Total Interactions']);
+        makePie('ages', [780,650], ['Male', 'Female'])
+    }
 }
 
 
@@ -137,8 +155,11 @@ function pullData(url)
         function (response) {
             if (response && !response.error) {
                 processResponse(response);
-                next = response.paging.next;
-                $.get(next, processResponse, "json");
+
+                if(next != undefined) {
+                    next = response.paging.next;
+                    $.get(next, processResponse, "json");
+                }
             }
         }
     );
