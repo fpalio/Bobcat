@@ -28,7 +28,7 @@ function login() {
             console.log('Logged in.');
 
             // this function runs when the DOM is ready, i.e. when the document has been parsed
-            pullData("velogig");
+            pullData("Velogig");
             calculateData();
 
             console.log(dataChart);

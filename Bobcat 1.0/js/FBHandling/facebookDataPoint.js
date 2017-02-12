@@ -82,6 +82,8 @@ function processComments(comments, data) {
 
 function processResponse(response)
 {
+
+    console.log("processing Response...");
     var reactions = {};
 
     var interactions = 0;
@@ -108,19 +110,39 @@ function processResponse(response)
         idToPost[response.data[post].id].add(post_object);
 
     }
-    
+
+    console.log(Object.keys(monthYearToUsers).length);
+    if(Object.keys(monthYearToUsers).length < 13)
+    {
+        next = response.paging.next;
+
+        if(next != undefined) {
+            $.get(next, processResponse, "json");
+        }
+    }
 }
+
 
 function pullData(url)
 {
-    var next = url + "/posts?fields=reactions,created_time,comments{created_time,from}&limit=100";
+    idToPost = {};
+    monthYearToUsers = {};
+
+    var next = url + "/posts?fields=reactions,created_time,comments{created_time,from}";
+    var stop = false;
+
+
     FB.api(
         next,
         function (response) {
             if (response && !response.error) {
                 processResponse(response);
-                //next = response.paging.next.replace("https://graph.facebook.com/v2.8","");
+                next = response.paging.next;
+                $.get(next, processResponse, "json");
             }
         }
     );
+
+
+
 }

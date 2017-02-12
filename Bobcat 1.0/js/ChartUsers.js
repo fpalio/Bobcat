@@ -25,7 +25,7 @@ function makeData(id,typeParam, dataParam, labelParam){
         },
         options:{
             // over all css or design
-            legend : {labels: {fontColor: "black",fontSize: 12, fontFamily:"Courier New"}},
+            legend : {labels: {fontColor: "red",fontSize: 12, fontFamily:"Courier New"}},
             animateScale: true,
 
 
